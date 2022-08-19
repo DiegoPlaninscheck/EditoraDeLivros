@@ -1,14 +1,12 @@
 package br.senai.sc.livros.view;
 
 import br.senai.sc.livros.controller.LivrosController;
-import br.senai.sc.livros.model.entities.Diretor;
-import br.senai.sc.livros.model.entities.Pessoa;
-import br.senai.sc.livros.model.entities.Revisor;
-import br.senai.sc.livros.model.entities.Status;
+import br.senai.sc.livros.model.entities.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class CadastroLivro extends JFrame {
     private JButton cadastrarButton;
@@ -18,8 +16,12 @@ public class CadastroLivro extends JFrame {
     private JTextField qtdPagina;
     private JPanel cadastroLivro;
     private JComboBox status;
+    private JLabel TituloPagina;
 
-    CadastroLivro(Pessoa pessoa) {
+    public CadastroLivro(Pessoa pessoa) {
+        if(pessoa instanceof Revisor || pessoa instanceof Diretor){
+            TituloPagina.setText("Editar Livro");
+        }
         criarComponentes();
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
@@ -32,6 +34,7 @@ public class CadastroLivro extends JFrame {
                     LivrosController controller = new LivrosController();
                     controller.cadastrar(titulo.getText(), pessoa, isbn.getText(), qtdPagina.getText());
                 }
+                System.out.println("CadastroLivro: " + status.getSelectedItem());
             }
         });
         voltarButton.addActionListener(new ActionListener() {
@@ -62,10 +65,45 @@ public class CadastroLivro extends JFrame {
         qtdPagina.disable();
     }
 
+//    static ArrayList<Status> listaStatus = new ArrayList<>();
+//
+//    static {
+//        listaStatus.add(Status.AGUARDANDO_REVISAO);
+//        listaStatus.add(Status.APROVADO);
+//        listaStatus.add(Status.EM_REVISAO);
+//        listaStatus.add(Status.PUBLICADO);
+//        listaStatus.add(Status.AGUARDANDO_EDICAO);
+//        listaStatus.add(Status.REPROVADO);
+//    }
+
+//    public static Status retornaStatus(){
+//        if(Menu.getUsuario() instanceof Revisor){
+//            listaStatus.get(4);
+//            listaStatus.get(5);
+//            listaStatus.get(2);
+//            listaStatus.get(3);
+//        }
+//        return null;
+//    }
+
+    public Status teste(){
+        return (Status) status.getSelectedItem();
+    }
+
     private void criarComponentes() {
         setContentPane(cadastroLivro);
-        if(Menu.getUsuario() instanceof Revisor || Menu.getUsuario() instanceof Diretor){
-            status.setModel(new DefaultComboBoxModel(Status.values()));
+        if(Menu.getUsuario() instanceof Revisor){
+            Status [] statusFiltrados = new Status[4];
+            statusFiltrados[0] = Status.AGUARDANDO_EDICAO;
+            statusFiltrados[1] = Status.REPROVADO;
+            statusFiltrados[2] = Status.APROVADO;
+            statusFiltrados[3] = Status.EM_REVISAO;
+            status.setModel(new DefaultComboBoxModel(statusFiltrados));
+        } else if(Menu.getUsuario() instanceof Diretor){
+            Status [] statusFiltrados = new Status[2];
+            statusFiltrados[0] = Status.PUBLICADO;
+            statusFiltrados[1] = Status.REPROVADO;
+            status.setModel(new DefaultComboBoxModel(statusFiltrados));
         } else {
             status.setVisible(false);
         }

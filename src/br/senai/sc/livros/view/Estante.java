@@ -6,6 +6,8 @@ import br.senai.sc.livros.model.entities.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Estante extends JFrame {
     private JPanel estante;
@@ -30,19 +32,28 @@ public class Estante extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Pessoa usuario = Menu.getUsuario();
                 LivrosController controller = new LivrosController();
+                System.out.println(tabelaLivros.getSelectedRow());
                 if (usuario instanceof Autor) {
                     String isbn = tabelaLivros.getValueAt(tabelaLivros.getSelectedRow(), 0).toString();
-                    controller.editarLivro(isbn);
-                    JOptionPane.showMessageDialog(null, "Livro atualizado!");
+                    if(isbn != null){
+                        controller.editarLivro(isbn);
+                        JOptionPane.showMessageDialog(null, "Livro atualizado!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Livro inexistente!");
+                    }
                 } else if (usuario instanceof Revisor || usuario instanceof Diretor) {
-                    CadastroLivro cadastroLivro = new CadastroLivro(usuario);
-                    dispose();
-                    cadastroLivro.setVisible(true);
-                    String isbn = tabelaLivros.getValueAt(tabelaLivros.getSelectedRow(), 0).toString();
-                    String titulo = tabelaLivros.getValueAt(tabelaLivros.getSelectedRow(), 1).toString();
-                    String qtdPagina = tabelaLivros.getValueAt(tabelaLivros.getSelectedRow(), 2).toString();
-                    cadastroLivro.setarValorDosCampos(titulo, isbn, qtdPagina);
-                    controller.editarLivro(isbn);
+                    if(tabelaLivros.getSelectedRow() < 0){
+                        JOptionPane.showMessageDialog(null, "Nenhum livro foi selecionado!");
+                    } else {
+                        CadastroLivro cadastroLivro = new CadastroLivro(usuario);
+                        dispose();
+                        cadastroLivro.setVisible(true);
+                        String isbn = tabelaLivros.getValueAt(tabelaLivros.getSelectedRow(), 0).toString();
+                        String titulo = tabelaLivros.getValueAt(tabelaLivros.getSelectedRow(), 1).toString();
+                        String qtdPagina = tabelaLivros.getValueAt(tabelaLivros.getSelectedRow(), 2).toString();
+                        cadastroLivro.setarValorDosCampos(titulo, isbn, qtdPagina);
+                        controller.editarLivro(isbn);
+                    }
                 }
             }
         });

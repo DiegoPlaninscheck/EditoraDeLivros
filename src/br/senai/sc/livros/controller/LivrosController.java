@@ -2,6 +2,7 @@ package br.senai.sc.livros.controller;
 
 import br.senai.sc.livros.model.entities.*;
 import br.senai.sc.livros.model.service.LivrosService;
+import br.senai.sc.livros.view.CadastroLivro;
 import br.senai.sc.livros.view.Menu;
 
 import java.util.ArrayList;
@@ -43,14 +44,18 @@ public class LivrosController {
     }
 
     public void editarLivro(String isbn) {
+        Pessoa pessoa = Menu.getUsuario();
         LivrosService service = new LivrosService();
         Livros livroAtualizado = service.selecionar(Integer.parseInt(isbn));
+        CadastroLivro cadastroLivro = new CadastroLivro(pessoa);
+        Status status = cadastroLivro.teste();
+        System.out.println("LivrosController: " + status);
         if (Menu.getUsuario() instanceof Autor) {
-            livroAtualizado.setStatus(Status.AGUARDANDO_REVISAO);
+            livroAtualizado.setStatus(status);
         } else if (Menu.getUsuario() instanceof Revisor) {
-            livroAtualizado.setStatus(Status.APROVADO);
+            livroAtualizado.setStatus(status);
         } else if(Menu.getUsuario() instanceof Diretor){
-            livroAtualizado.setStatus(Status.PUBLICADO);
+            livroAtualizado.setStatus(status);
         }
         service.atualizar(Integer.parseInt(isbn), livroAtualizado);
     }
