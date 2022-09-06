@@ -4,9 +4,10 @@
     <list default="true" id="2d38a5cc-32fb-41ea-8a8a-c4d88ccd866d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/senai/sc/livros/controller/LivrosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/senai/sc/livros/controller/LivrosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/senai/sc/livros/view/CadastroLivro.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/senai/sc/livros/view/CadastroLivro.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/senai/sc/livros/model/dao/LivrosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/senai/sc/livros/model/dao/LivrosDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/senai/sc/livros/model/service/LivrosService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/senai/sc/livros/model/service/LivrosService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/senai/sc/livros/view/CadastroLivro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/senai/sc/livros/view/CadastroLivro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/senai/sc/livros/view/Estante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/senai/sc/livros/view/Estante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/senai/sc/livros/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/senai/sc/livros/view/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

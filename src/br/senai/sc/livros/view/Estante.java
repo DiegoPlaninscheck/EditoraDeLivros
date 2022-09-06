@@ -18,7 +18,6 @@ public class Estante extends JFrame {
 
     public Estante(int botao) {
         lista = botao;
-        System.out.println("estante(lista): " + lista);
         criarComponentes();
         voltarButton.addActionListener(new ActionListener() {
             @Override
@@ -32,7 +31,6 @@ public class Estante extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Pessoa usuario = Menu.getUsuario();
                 LivrosController controller = new LivrosController();
-                System.out.println(tabelaLivros.getSelectedRow());
                 if (usuario instanceof Autor) {
                     String isbn = tabelaLivros.getValueAt(tabelaLivros.getSelectedRow(), 0).toString();
                     if(isbn != null){

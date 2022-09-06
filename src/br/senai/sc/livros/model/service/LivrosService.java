@@ -16,12 +16,10 @@ public class LivrosService {
     }
 
     public ArrayList<Livros> selcionarPorStatus(Status status){
-        System.out.println("Livros service: " + status);
         return acesso.selecionarPorStatus(status);
     }
 
     public ArrayList<Livros> selecionarAtividadesAutor(Pessoa pessoa) {
-        System.out.println("Livros service: " + pessoa);
         return acesso.selecionarAtividadesAutor(pessoa);
     }
 

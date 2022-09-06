@@ -19,7 +19,7 @@ public class CadastroLivro extends JFrame {
     private JLabel TituloPagina;
 
     public CadastroLivro(Pessoa pessoa) {
-        if(pessoa instanceof Revisor || pessoa instanceof Diretor){
+        if (pessoa instanceof Revisor || pessoa instanceof Diretor) {
             TituloPagina.setText("Editar Livro");
         }
         criarComponentes();
@@ -34,7 +34,6 @@ public class CadastroLivro extends JFrame {
                     LivrosController controller = new LivrosController();
                     controller.cadastrar(titulo.getText(), pessoa, isbn.getText(), qtdPagina.getText());
                 }
-                System.out.println("CadastroLivro: " + status.getSelectedItem());
             }
         });
         voltarButton.addActionListener(new ActionListener() {
@@ -47,7 +46,7 @@ public class CadastroLivro extends JFrame {
     }
 
     private void voltar() {
-        if(Menu.getUsuario() instanceof Revisor || Menu.getUsuario() instanceof Diretor){
+        if (Menu.getUsuario() instanceof Revisor || Menu.getUsuario() instanceof Diretor) {
             Estante estante = new Estante(2);
             estante.setVisible(true);
         } else {
@@ -56,7 +55,7 @@ public class CadastroLivro extends JFrame {
         }
     }
 
-    public void setarValorDosCampos(String t, String i, String qtd){
+    public void setarValorDosCampos(String t, String i, String qtd) {
         titulo.setText(t);
         isbn.setText(i);
         qtdPagina.setText(qtd);
@@ -86,21 +85,21 @@ public class CadastroLivro extends JFrame {
 //        return null;
 //    }
 
-    public Status teste(){
+    public Status teste() {
         return (Status) status.getSelectedItem();
     }
 
     private void criarComponentes() {
         setContentPane(cadastroLivro);
-        if(Menu.getUsuario() instanceof Revisor){
-            Status [] statusFiltrados = new Status[4];
+        if (Menu.getUsuario() instanceof Revisor) {
+            Status[] statusFiltrados = new Status[4];
             statusFiltrados[0] = Status.AGUARDANDO_EDICAO;
             statusFiltrados[1] = Status.REPROVADO;
             statusFiltrados[2] = Status.APROVADO;
             statusFiltrados[3] = Status.EM_REVISAO;
             status.setModel(new DefaultComboBoxModel(statusFiltrados));
-        } else if(Menu.getUsuario() instanceof Diretor){
-            Status [] statusFiltrados = new Status[2];
+        } else if (Menu.getUsuario() instanceof Diretor) {
+            Status[] statusFiltrados = new Status[2];
             statusFiltrados[0] = Status.PUBLICADO;
             statusFiltrados[1] = Status.REPROVADO;
             status.setModel(new DefaultComboBoxModel(statusFiltrados));

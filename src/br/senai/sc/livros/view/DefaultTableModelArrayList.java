@@ -12,7 +12,6 @@ public class DefaultTableModelArrayList extends AbstractTableModel {
 
     public DefaultTableModelArrayList(ArrayList<Livros> lista) {
         this.dados = lista;
-        System.out.println("ArrayList: " + dados);
         colunas = new String[]{"ISBN", "Título", "Qtd Pág", "Autor", "Editora", "Status"};
     }
 

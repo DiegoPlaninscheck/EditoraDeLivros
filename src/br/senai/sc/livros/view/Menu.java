@@ -24,7 +24,6 @@ public class Menu extends JFrame implements ActionListener {
 
     public Menu(Pessoa pessoa) {
         usuario = pessoa;
-        System.out.println("menu: " + usuario);
         criarComponentes();
     }
 
@@ -64,7 +63,6 @@ public class Menu extends JFrame implements ActionListener {
         } else if (e.getActionCommand().equals("listarAtividades")) {
             dispose();
             Estante estante = new Estante(2);
-            System.out.println("Menu: " + estante);
             estante.setVisible(true);
         } else if (e.getActionCommand().equals("cadastrarRevisor")) {
             dispose();

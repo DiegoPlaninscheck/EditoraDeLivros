@@ -21,7 +21,6 @@ public class LivrosController {
     public ArrayList<Livros> buscarLista(int lista) {
         LivrosService service = new LivrosService();
         Pessoa usuario = Menu.getUsuario();
-        System.out.println("Livros Controller: " + usuario);
         if (usuario instanceof Autor) {
             if (lista == 1) {
                 return service.selecionarPorAutor(usuario);
@@ -49,7 +48,6 @@ public class LivrosController {
         Livros livroAtualizado = service.selecionar(Integer.parseInt(isbn));
         CadastroLivro cadastroLivro = new CadastroLivro(pessoa);
         Status status = cadastroLivro.teste();
-        System.out.println("LivrosController: " + status);
         if (Menu.getUsuario() instanceof Autor) {
             livroAtualizado.setStatus(status);
         } else if (Menu.getUsuario() instanceof Revisor) {

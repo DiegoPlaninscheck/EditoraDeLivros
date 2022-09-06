@@ -46,11 +46,11 @@ public class LivrosDAO {
         }
     }
 
-    public ArrayList<Livros> selecionarTodos(){
+    public ArrayList<Livros> selecionarTodos() {
         return listaLivros;
     }
 
-    public ArrayList<Livros> selecionarPorAutor(Pessoa pessoa){
+    public ArrayList<Livros> selecionarPorAutor(Pessoa pessoa) {
         ArrayList<Livros> livrosAutor = new ArrayList<>();
         for (int i = 0; i < listaLivros.size(); i++) {
             if (listaLivros.get(i).getAutor().equals(pessoa)) {
@@ -60,8 +60,7 @@ public class LivrosDAO {
         return livrosAutor;
     }
 
-    public ArrayList<Livros> selecionarPorStatus(Status status){
-        System.out.println("Livros DAO: " + status);
+    public ArrayList<Livros> selecionarPorStatus(Status status) {
         ArrayList<Livros> livrosStatus = new ArrayList<>();
         for (int i = 0; i < listaLivros.size(); i++) {
             if (listaLivros.get(i).getStatus().equals(status)) {
@@ -72,16 +71,13 @@ public class LivrosDAO {
         return livrosStatus;
     }
 
-    public ArrayList<Livros> selecionarAtividadesAutor(Pessoa pessoa){
-        System.out.println("Livros DAO: " + pessoa);
+    public ArrayList<Livros> selecionarAtividadesAutor(Pessoa pessoa) {
         ArrayList<Livros> livrosAutor = new ArrayList<>();
         for (Livros livro : listaLivros) {
-            System.out.println("livro(livros DAO): " + livro);
             if (livro.getAutor().equals(pessoa) && livro.getStatus().equals(Status.AGUARDANDO_EDICAO)) {
                 livrosAutor.add(livro);
             }
         }
-        System.out.println("Livros Autor(lista): " + livrosAutor.size());
         return livrosAutor;
     }
 }
